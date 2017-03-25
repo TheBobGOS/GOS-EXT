@@ -1,6 +1,6 @@
 --variables
 local lolVersion = "7.6"
-local scrVersion = "0.2.5 Alpha"
+local scrVersion = "0.1.7 Beta"
 
 menuIcon = "http://i.imgur.com/uO0pDv8.png"
 
@@ -71,13 +71,21 @@ function OnDraw()
 end
 
 function CanFlash()
-	return myHero:GetSpellData(flashSpell).currentCd == 0
+	if myHero:GetSpellData(flashSpell).currentCd == 0 then
+		return true;
+	else
+		return false;
+	end
 end
 
 function FlashGO()
 	print("Flash Helper | Flashing!")
-	Control.Move()
-	Control.CastSpell(flashHK)
+	--Control.Move()
+	Control.CastSpell(flashHK,cursorPos)
 	justFlashed = true;
 	flashTimer = 0;
+end
+
+function CrowdControlled()
+
 end
